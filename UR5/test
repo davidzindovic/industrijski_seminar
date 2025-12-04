@@ -1,0 +1,35 @@
+# IP naslov vašega računalnika (GLEJ navodila 1.2. točka 2)
+HOST_IP = "192.168.1.100" 
+HOST_PORT = 30002 # Vrata TCP/IP strežnika na računalniku
+
+def send_box_state(state):
+    """
+    Vzpostavi TCP povezavo z računalnikom, pošlje stanje in jo zapre.
+    'state' je eno izmed: "PRISPELO", "ODPRAVLJENO", "ZAKLENJENA", "ODKLENJENA"
+    """
+    
+    # 1. Odpri vtičnico
+    socket_open("ur_conn", HOST_IP, HOST_PORT)
+    sync()
+    
+    # Preveri, če je povezava uspela
+    if (socket_is_connected("ur_conn")):
+        
+        # 2. Pošlji stanje. Sporočilo mora biti zaključeno z znakom nove vrstice ('\n')
+        socket_send_string(state + "\n", "ur_conn")
+        
+        # 3. Počakaj na potrdilo od strežnika (računalnika)
+        # Npr. čakamo 0.5s na odgovor
+        response = socket_read_line("ur_conn", 0.5) 
+        
+        if (response == "OK"):
+            textmsg("Stanje " + state + " uspešno poslano in potrjeno.")
+        else:
+            textmsg("Napaka pri potrdilu za stanje " + state + ". Prejeto: " + response)
+            
+        # 4. Zapri vtičnico
+        socket_close("ur_conn")
+    else:
+        textmsg("Napaka: Povezava z računalnikom na " + HOST_IP + ":" + HOST_PORT + " ni uspela.")
+        
+end

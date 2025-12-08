@@ -1,22 +1,15 @@
- Program
-   BeforeStart
-     open_socket≔socket_open("192.168.65.102",50000,"ur5e_pc")
-     Loop open_socket≟ False 
-       open_socket≔socket_open("192.168.65.102",50000,"ur5e_pc")
-   Robot Program
-     'MoveJ'
-     If open_socket≟ True 
-       string
-         'read string'
-         str≔socket_read_string("ur5e_pc")
-         Loop str≟""
-           str≔socket_read_string("ur5e_pc")
-           Wait: 0.01
-         'send string'
-         was_send≔socket_send_string("ACK","ur5e_pc")
-         Loop was_send≟ False 
-           was_send≔socket_send_string("ACK","ur5e_pc")
-           Wait: 0.01
-         Wait: 0.01
-       socket_close("ur5e_pc")
-       Halt
+open_socket≔socket_open("192.168.65.102",50000,"ur5e_pc")
+Loop open_socket≟ False 
+    open_socket≔socket_open("192.168.65.102",50000,"ur5e_pc")
+If open_socket≟ True 
+    str≔socket_read_string("ur5e_pc")
+    Loop str≟""
+        str≔socket_read_string("ur5e_pc")
+        Wait: 0.01
+    was_send≔socket_send_string("ACK","ur5e_pc")
+    Loop was_send≟ False 
+        was_send≔socket_send_string("ACK","ur5e_pc")
+        Wait: 0.01
+    Wait: 0.01
+    socket_close("ur5e_pc")
+Halt

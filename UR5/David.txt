@@ -1,0 +1,46 @@
+ Program
+   BeforeStart
+     MoveJ
+       Waypoint_13
+     Gripper Activate
+     If  not digital_in[4]
+       Popup: Postavi skatlo k zadnjemu senzorju :)
+       Loop  not digital_in[4]
+         Comment
+   Robot Program
+     Loop
+       Call tcp_ip
+     MoveL
+       Waypoint_4
+     If  not digital_in[5]
+       Set DO[5]=On
+     Loop  not digital_in[5]
+       Comment
+     Set DO[5]=Off
+     'tcp ip skatla prispela'
+     MoveL
+       Waypoint_14
+       'premik za prijem pokrova'
+     Gripper Close (2)
+     'gripper primer pokrov'
+     Set DO[0]=On
+     'vkopi napajanje za kljucavnico'
+     'tcp ip skatla odklenjena'
+     MoveL
+       Waypoint_5
+       'dvigne pokrov'
+     Set DO[0]=Off
+     'izklopi napajanje kljucavice (<4s)'
+     MoveL
+       Waypoint_6
+       'pokrov premakne k zadnjemu delu skatle'
+     Gripper Open (2)
+     'odpre prijemalo'
+     MoveL
+       Waypoint_11
+       'stran od skatle'
+       Waypoint_13
+       'domov'
+     Call tcp_ip
+   tcp_ip
+     Script: tcp.script

@@ -1,0 +1,32 @@
+ Program
+   Robot Program
+     Call SubProgram_1
+   SubProgram_1
+     open_socket=socket_open("192.168.65.102",50000,"student")
+     Loop open_socket==False
+       open_socket=socket_open("192.168.65.102",50000,"student")
+     Popup: :)
+     If open_socket==True
+       str=socket_read_string("student")
+       Loop str==""
+         str=socket_read_string("student")
+         Wait: 0.01
+       Popup: rec
+       was_send=socket_send_string("ACK","student")
+       Loop was_send==False
+         was_send=socket_send_string("ACK","student")
+         Wait: 0.01
+       Wait: 0.01
+       Popup: send
+       read_int=socket_read_binary_integer(1,"student")
+       Loop read_int[0]==0
+         read_int=socket_read_binary_integer(1,"student")
+         Wait: 0.01
+       Popup: rec
+       was_send=socket_send_int(9,"student")
+       Loop was_send==False
+         was_send=socket_send_int(9,"student")
+         Wait: 0.01
+       Wait: 0.01
+       socket_close("student")
+       Halt

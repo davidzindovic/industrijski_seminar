@@ -5,8 +5,8 @@ import time
 import traceback
 
 # --- Konfiguracija ---
-HOST = '0.0.0.0'  # Poslušaj na vseh vmesnikih
-TCP_PORT = 30002  # Vrata za komunikacijo z robotom
+HOST = "192.168.65.102"  # Poslušaj na vseh vmesnikih
+TCP_PORT = 50000  # Vrata za komunikacijo z robotom
 FLASK_PORT = 5000  # Vrata za REST API
 REFRESH_INTERVAL = 5 # Sekunde za avtomatsko osveževanje spletne strani
 

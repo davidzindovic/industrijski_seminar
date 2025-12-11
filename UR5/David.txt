@@ -34,9 +34,6 @@
      Set DO[0]=On
      'vkopi napajanje za kljucavnico'
      'tcp ip skatla odklenjena'
-     open_socket≔socket_open("192.168.65.102",50000,"student")
-     Loop  not open_socket
-       open_socket≔socket_open("192.168.65.102",50000,"student")
      If open_socket
        was_send≔socket_send_string("skatla je odklenjena","student")
        Loop  not was_send

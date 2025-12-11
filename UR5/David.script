@@ -3982,8 +3982,8 @@ def David():
     popup("Postavi skatlo k zadnjemu senzorju :)", "Message", False, False, blocking=True)
     $ 7 "Loop  not digital_in[4]"
     while (  not  get_standard_digital_in(4)):
-      $ 8 "Comment"
-      # Comment
+      $ 8 "'prazen loop ne laufa :)'"
+      # 'prazen loop ne laufa :)'
     end
   end
   $ 9 "open_socket≔socket_open('192.168.65.102',50000,'student')"
@@ -4028,12 +4028,12 @@ def David():
   # 'tcp ip skatla prispela'
   $ 22 "If open_socket"
   if (open_socket):
-    $ 23 "was_send≔socket_send_string('skatla je prispela','student')"
-    global was_send=socket_send_string("skatla je prispela","student")
+    $ 23 "was_send≔socket_send_string('PRISPELA','student')"
+    global was_send=socket_send_string("PRISPELA","student")
     $ 24 "Loop  not was_send"
     while (  not  was_send):
-      $ 25 "was_send≔socket_send_string('skatla je prispela','student')"
-      global was_send=socket_send_string("skatla je prispela","student")
+      $ 25 "was_send≔socket_send_string('PRISPELA','student')"
+      global was_send=socket_send_string("PRISPELA","student")
       $ 26 "Wait: 0.01"
       sleep(0.01)
     end
@@ -4070,12 +4070,12 @@ def David():
   # 'tcp ip skatla odklenjena'
   $ 36 "If open_socket"
   if (open_socket):
-    $ 37 "was_send≔socket_send_string('skatla je odklenjena','student')"
-    global was_send=socket_send_string("skatla je odklenjena","student")
+    $ 37 "was_send≔socket_send_string('ODKLENJENA','student')"
+    global was_send=socket_send_string("ODKLENJENA","student")
     $ 38 "Loop  not was_send"
     while (  not  was_send):
-      $ 39 "was_send≔socket_send_string('skatla je odklenjena','student')"
-      global was_send=socket_send_string("skatla je odklenjena","student")
+      $ 39 "was_send≔socket_send_string('ODKLENJENA','student')"
+      global was_send=socket_send_string("ODKLENJENA","student")
       $ 40 "Wait: 0.01"
       sleep(0.01)
     end
@@ -4091,12 +4091,12 @@ def David():
   # 'tcp_ip skatla je odprta'
   $ 46 "If open_socket"
   if (open_socket):
-    $ 47 "was_send≔socket_send_string('skatla je odprta','student')"
-    global was_send=socket_send_string("skatla je odprta","student")
+    $ 47 "was_send≔socket_send_string('ODPRTA','student')"
+    global was_send=socket_send_string("ODPRTA","student")
     $ 48 "Loop  not was_send"
     while (  not  was_send):
-      $ 49 "was_send≔socket_send_string('skatla je odprta','student')"
-      global was_send=socket_send_string("skatla je odprta","student")
+      $ 49 "was_send≔socket_send_string('ODPRTA','student')"
+      global was_send=socket_send_string("ODPRTA","student")
       $ 50 "Wait: 0.01"
       sleep(0.01)
     end
@@ -4192,12 +4192,12 @@ def David():
   # 'pokrov postavi v zacetno pozicijo'
   $ 77 "If open_socket"
   if (open_socket):
-    $ 78 "was_send≔socket_send_string('skatla je zaprta','student')"
-    global was_send=socket_send_string("skatla je zaprta","student")
+    $ 78 "was_send≔socket_send_string('ZAPRTA','student')"
+    global was_send=socket_send_string("ZAPRTA","student")
     $ 79 "Loop  not was_send"
     while (  not  was_send):
-      $ 80 "was_send≔socket_send_string('skatla je zaprta','student')"
-      global was_send=socket_send_string("skatla je zaprta","student")
+      $ 80 "was_send≔socket_send_string('ZAPRTA','student')"
+      global was_send=socket_send_string("ZAPRTA","student")
       $ 81 "Wait: 0.01"
       sleep(0.01)
     end
@@ -4233,12 +4233,12 @@ def David():
   # 'izklopi napajanje za kljucavnico'
   $ 90 "If open_socket"
   if (open_socket):
-    $ 91 "was_send≔socket_send_string('skatla je zaklenjena','student')"
-    global was_send=socket_send_string("skatla je zaklenjena","student")
+    $ 91 "was_send≔socket_send_string('ZAKLENJENA','student')"
+    global was_send=socket_send_string("ZAKLENJENA","student")
     $ 92 "Loop  not was_send"
     while (  not  was_send):
-      $ 93 "was_send≔socket_send_string('skatla je zaklenjena','student')"
-      global was_send=socket_send_string("skatla je zaklenjena","student")
+      $ 93 "was_send≔socket_send_string('ZAKLENJENA','student')"
+      global was_send=socket_send_string("ZAKLENJENA","student")
       $ 94 "Wait: 0.01"
       sleep(0.01)
     end
@@ -4259,12 +4259,12 @@ def David():
     # 'tcp_ip skatla sla naprej'
     $ 102 "If open_socket"
     if (open_socket):
-      $ 103 "was_send≔socket_send_string('skatla je sla naprej','student')"
-      global was_send=socket_send_string("skatla je sla naprej","student")
+      $ 103 "was_send≔socket_send_string('ODPRAVLJENA','student')"
+      global was_send=socket_send_string("ODPRAVLJENA","student")
       $ 104 "Loop  not was_send"
       while (  not  was_send):
-        $ 105 "was_send≔socket_send_string('skatla je sla naprej','student')"
-        global was_send=socket_send_string("skatla je sla naprej","student")
+        $ 105 "was_send≔socket_send_string('ODPRAVLJENA','student')"
+        global was_send=socket_send_string("ODPRAVLJENA","student")
         $ 106 "Wait: 0.01"
         sleep(0.01)
       end

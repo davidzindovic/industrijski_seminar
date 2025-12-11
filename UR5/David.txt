@@ -6,7 +6,7 @@
      If  not digital_in[4]
        Popup: Postavi skatlo k zadnjemu senzorju :)
        Loop  not digital_in[4]
-         Comment
+         'prazen loop ne laufa :)'
      open_socket≔socket_open("192.168.65.102",50000,"student")
      Loop  not open_socket
        open_socket≔socket_open("192.168.65.102",50000,"student")
@@ -21,9 +21,9 @@
      Set DO[5]=Off
      'tcp ip skatla prispela'
      If open_socket
-       was_send≔socket_send_string("skatla je prispela","student")
+       was_send≔socket_send_string("PRISPELA","student")
        Loop  not was_send
-         was_send≔socket_send_string("skatla je prispela","student")
+         was_send≔socket_send_string("PRISPELA","student")
          Wait: 0.01
        Wait: 0.01
      MoveL
@@ -35,9 +35,9 @@
      'vkopi napajanje za kljucavnico'
      'tcp ip skatla odklenjena'
      If open_socket
-       was_send≔socket_send_string("skatla je odklenjena","student")
+       was_send≔socket_send_string("ODKLENJENA","student")
        Loop  not was_send
-         was_send≔socket_send_string("skatla je odklenjena","student")
+         was_send≔socket_send_string("ODKLENJENA","student")
          Wait: 0.01
        Wait: 0.01
      MoveL
@@ -45,9 +45,9 @@
        'dvigne pokrov'
      'tcp_ip skatla je odprta'
      If open_socket
-       was_send≔socket_send_string("skatla je odprta","student")
+       was_send≔socket_send_string("ODPRTA","student")
        Loop  not was_send
-         was_send≔socket_send_string("skatla je odprta","student")
+         was_send≔socket_send_string("ODPRTA","student")
          Wait: 0.01
        Wait: 0.01
      Set DO[0]=Off
@@ -76,9 +76,9 @@
        Waypoint_14
        'pokrov postavi v zacetno pozicijo'
        If open_socket
-         was_send≔socket_send_string("skatla je zaprta","student")
+         was_send≔socket_send_string("ZAPRTA","student")
          Loop  not was_send
-           was_send≔socket_send_string("skatla je zaprta","student")
+           was_send≔socket_send_string("ZAPRTA","student")
            Wait: 0.01
          Wait: 0.01
        Gripper Open (2)
@@ -89,9 +89,9 @@
        Set DO[0]=Off
        'izklopi napajanje za kljucavnico'
        If open_socket
-         was_send≔socket_send_string("skatla je zaklenjena","student")
+         was_send≔socket_send_string("ZAKLENJENA","student")
          Loop  not was_send
-           was_send≔socket_send_string("skatla je zaklenjena","student")
+           was_send≔socket_send_string("ZAKLENJENA","student")
            Wait: 0.01
          Wait: 0.01
        Waypoint_13
@@ -101,9 +101,9 @@
        'ce je skatla se pri senzorju posljemo naprej'
        'tcp_ip skatla sla naprej'
        If open_socket
-         was_send≔socket_send_string("skatla je sla naprej","student")
+         was_send≔socket_send_string("ODPRAVLJENA","student")
          Loop  not was_send
-           was_send≔socket_send_string("skatla je sla naprej","student")
+           was_send≔socket_send_string("ODPRAVLJENA","student")
            Wait: 0.01
          Wait: 0.01
      Loop digital_in[5]

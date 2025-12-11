@@ -12,10 +12,12 @@ REFRESH_INTERVAL = 5 # Sekunde za avtomatsko osveževanje spletne strani
 
 # Stanja škatle (Ključi so sporočila, ki jih mora poslati robot)
 STANJA_SKATLE = {
-    "PRISPELO": "Prispelo",
-    "ODPRAVLJENO": "Odpravljeno",
-    "ZAKLENJENA": "Zaklenjena",
-    "ODKLENJENA": "Odklenjena"
+    "PRISPELA": "Prispela škatla",
+    "ODPRAVLJENA": "Odpravljena škatla",
+    "ZAKLENJENA": "Zaklenjena škatla",
+    "ODKLENJENA": "Odklenjena škatla",
+    "ODPRTA": "Odprta škatla",
+    "ZAPRTA": "Zaprta škatla"
 }
 
 # --- Globalne spremenljivke in Locki ---

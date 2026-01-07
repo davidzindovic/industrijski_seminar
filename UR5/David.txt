@@ -7,6 +7,7 @@
        Popup: Postavi skatlo k zadnjemu senzorju :)
        Loop  not digital_in[4]
          'prazen loop ne laufa :)'
+         Wait: 0.01
      open_socket≔socket_open("192.168.65.102",50000,"student")
      Loop  not open_socket
        open_socket≔socket_open("192.168.65.102",50000,"student")
@@ -18,6 +19,7 @@
        Set DO[5]=On
      Loop  not digital_in[5]
        'cakam da se skatla pripelje'
+       Wait: 0.01
      Set DO[5]=Off
      'tcp ip skatla prispela'
      If open_socket
@@ -29,10 +31,12 @@
      MoveL
        Waypoint_14
        'premik za prijem pokrova'
-     Gripper Close (2)
-     'gripper primer pokrov'
      Set DO[0]=On
      'vkopi napajanje za kljucavnico'
+     Wait: 1.0
+     Set DO[0]=Off
+     Gripper Close (2)
+     'gripper primer pokrov'
      'tcp ip skatla odklenjena'
      If open_socket
        was_send≔socket_send_string("ODKLENJENA","student")
@@ -40,9 +44,7 @@
          was_send≔socket_send_string("ODKLENJENA","student")
          Wait: 0.01
        Wait: 0.01
-     MoveL
-       Waypoint_5
-       'dvigne pokrov'
+     'MoveL'
      'tcp_ip skatla je odprta'
      If open_socket
        was_send≔socket_send_string("ODPRTA","student")
@@ -50,13 +52,24 @@
          was_send≔socket_send_string("ODPRTA","student")
          Wait: 0.01
        Wait: 0.01
-     Set DO[0]=Off
      'izklopi napajanje kljucavice (<4s)'
      MoveL
        Waypoint_6
-       'pokrov premakne k zadnjemu delu skatle'
+       'pokrov premakne blizje zadnjemu delu skatle'
      Gripper Open (2)
      'odpre prijemalo'
+     MoveL
+       Waypoint_01
+       'se umakne za potisk pokrova'
+     MoveL
+       Waypoint_001
+       'vmesen korak za potisk pokrova'
+     MoveL
+       Waypoint_02
+       'se pripravi za potisk pokrova'
+     MoveL
+       Waypoint_03
+       'potisne pokrov'
      MoveL
        Waypoint_11
        'stran od skatle'
@@ -67,11 +80,13 @@
        'se postavi nad skatlo'
        Gripper Open (2)
        'odpre gripper'
-       Waypoint_6
-       'se locira pri bunki za prijet'
+       Waypoint_04
+       'premik nad pozicijo za pobiranje pokrova'
+       Waypoint_05
+       'premik na pozicijo za pobiranje pokrova'
        Gripper Close (2)
        'zapre prijemalo'
-       Waypoint_5
+       Waypoint_06
        'dvigne pokrov'
        Waypoint_14
        'pokrov postavi v zacetno pozicijo'

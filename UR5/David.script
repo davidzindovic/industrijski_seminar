@@ -1,6 +1,4 @@
 def David():
-  set_safety_mode_transition_hardness(1)
-  set_gravity([0.0, 0.0, 9.82])
   set_standard_analog_input_domain(0, 1)
   set_standard_analog_input_domain(1, 1)
   set_tool_analog_input_domain(0, 1)
@@ -15,14 +13,16 @@ def David():
   set_tool_digital_output_mode(0, 1)
   set_tool_digital_output_mode(1, 1)
   set_tool_voltage(0)
-  step_count_a675a603_c415_4f63_bae3_28c469aacbcc = 0
-  thread Step_Counter_Thread_c7a9660e_c5de_4b60_9c68_dbafd1253733():
+  set_safety_mode_transition_hardness(1)
+  step_count_9cdec0a5_dbd3_4a62_8ea6_92af0f1343ef = 0
+  thread Step_Counter_Thread_b3b2059e_df44_4984_8db6_eaac2a5c90b1():
     while (True):
-      step_count_a675a603_c415_4f63_bae3_28c469aacbcc = step_count_a675a603_c415_4f63_bae3_28c469aacbcc + 1
+      step_count_9cdec0a5_dbd3_4a62_8ea6_92af0f1343ef = step_count_9cdec0a5_dbd3_4a62_8ea6_92af0f1343ef + 1
       sync()
     end
   end
-  run Step_Counter_Thread_c7a9660e_c5de_4b60_9c68_dbafd1253733()
+  run Step_Counter_Thread_b3b2059e_df44_4984_8db6_eaac2a5c90b1()
+  set_gravity([0.0, 0.0, 9.82])
   # begin: URCap Installation Node
   #   Source: ARCS2, 2.0.5, AIRGATE ApS
   #   Type: ARCS2
@@ -414,10 +414,10 @@ def David():
   xmlrpc_server=rpc_factory("xmlrpc","http://127.0.0.1:4242")
   
   # Open connection with visual offset monitor
-  cam_locate_monitor=rpc_factory("xmlrpc","http://127.0.0.1:35155")
+  cam_locate_monitor=rpc_factory("xmlrpc","http://127.0.0.1:33087")
   
   # Open connection with visual offset monitor
-  visual_offset_monitor=rpc_factory("xmlrpc","http://127.0.0.1:43899")
+  visual_offset_monitor=rpc_factory("xmlrpc","http://127.0.0.1:39389")
   
   #######Vision urcap preamble end##########
   ###########################################
@@ -1978,8 +1978,8 @@ def David():
     end
     global servojId = 2
   rq_collision_detection_stop()
-  contactOffsetXmlRpcClient = rpc_factory("xmlrpc","http://localhost:35279")
-  palletizerXmlRpcClient = rpc_factory("xmlrpc","http://localhost:41015")
+  contactOffsetXmlRpcClient = rpc_factory("xmlrpc","http://localhost:43461")
+  palletizerXmlRpcClient = rpc_factory("xmlrpc","http://localhost:39281")
   # end: URCap Installation Node
   # begin: URCap Installation Node
   #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
@@ -3937,16 +3937,28 @@ def David():
   # end: URCap Installation Node
   global Waypoint_13_p=p[.463075378858, -.033118898203, .367768326041, -2.244549547112, 2.186980266689, -.146698143579]
   global Waypoint_13_q=[0.2635507583618164, -1.4171207708171387, -1.6266908645629883, -1.6176563702025355, 1.4933080673217773, 0.2373518943786621]
-  global Waypoint_4_p=p[.519156522835, .251252931368, .258081315581, -2.029121921385, 2.381370893788, -.062165587138]
-  global Waypoint_4_q=[0.7007012367248535, -1.7337714634337367, -1.5767345428466797, -1.3898499769023438, 1.531332015991211, 0.8616147041320801]
-  global Waypoint_14_p=p[.519156775937, .251250178495, .235923552770, -1.913430265306, 2.255660501523, .225490494162]
-  global Waypoint_14_q=[0.6059670448303223, -1.698531290093893, -1.7320833206176758, -1.1207493108562012, 1.7381596565246582, 0.7851557731628418]
-  global Waypoint_5_p=p[.476535220460, .292722299991, .269938378660, 2.341548701929, -1.670834425984, .318812430692]
-  global Waypoint_5_q=[0.9002838134765625, -1.8036877117552699, -1.4324216842651367, -1.7178675136961878, 1.3416061401367188, 0.5986371040344238]
-  global Waypoint_6_p=p[.503578519924, .354187987286, .295750684916, -2.425100303771, 1.909621069420, -.022346319980]
-  global Waypoint_6_q=[0.8343544006347656, -1.796575208703512, -1.4153871536254883, -1.445223645572998, 1.560166835784912, 0.5989603996276855]
+  global Waypoint_4_p=p[.590056785195, .345400457164, .346404902266, -2.196998113937, 2.219440293840, -.040291679599]
+  global Waypoint_4_q=[0.7344789505004883, -1.997808118859762, -1.0045957565307617, -1.6909080944456996, 1.5455546379089355, 0.7456479072570801]
+  global Waypoint_14_p=p[.590691955827, .347823211240, .305526547873, 2.172764276997, -2.166287134815, .069902761340]
+  global Waypoint_14_q=[0.7456297874450684, -2.05458464244985, -1.0044755935668945, -1.724589010278219, 1.5220775604248047, 0.7456116676330566]
+  global Waypoint_6_p=p[.590703087407, .382182873249, .328360235165, 1.950028721832, -1.951627591374, .449966499654]
+  global Waypoint_6_q=[0.8704757690429688, -2.380897661248678, -0.39194202423095703, -2.3245274029173792, 1.2879180908203125, 0.9274992942810059]
+  global Waypoint_01_p=p[.571574269346, .374397712413, .371422124647, 1.961688310974, -2.391957405826, .029489865356]
+  global Waypoint_01_q=[0.7810592651367188, -2.0693794689574183, -0.815150260925293, -1.8778792820372523, 1.5559697151184082, 0.979529857635498]
+  global Waypoint_001_p=p[.493332912072, .240993851770, .371404564950, 1.961666742853, -2.391915578890, .029514935952]
+  global Waypoint_001_q=[0.7068662643432617, -1.7017342052855433, -1.3084897994995117, -1.7510363064207972, 1.5530376434326172, 0.9058690071105957]
+  global Waypoint_02_p=p[.526745143140, .237719312996, .291293390808, 1.950208204135, -2.458073573808, .012375221811]
+  global Waypoint_02_q=[0.6587648391723633, -1.7409912548460902, -1.4781064987182617, -1.4974926275065918, 1.5630850791931152, 0.889859676361084]
+  global Waypoint_03_p=p[.526751742730, .350284344668, .291328413416, 1.950187440714, -2.458204313759, .012252654607]
+  global Waypoint_03_q=[0.8008732795715332, -1.875624795953268, -1.308670997619629, -1.5332802099040528, 1.5635037422180176, 1.0318779945373535]
   global Waypoint_11_p=p[.463069913685, .373635307885, .367778231425, -2.552402103854, 1.792810489584, -.143117491211]
   global Waypoint_11_q=[0.9444355964660645, -1.758153577844137, -1.2712469100952148, -1.6630522213377894, 1.479501724243164, 0.5989480018615723]
+  global Waypoint_04_p=p[.454818817763, .411321007042, .329882546598, -2.306666213389, 2.117267733564, -.146324640661]
+  global Waypoint_04_q=[0.9934988021850586, -1.8158890209593714, -1.2895774841308594, -1.6158977947630824, 1.4775753021240234, 0.9098916053771973]
+  global Waypoint_05_p=p[.454825579913, .411325549870, .275128730836, -2.306691410841, 2.117311031571, -.146386460588]
+  global Waypoint_05_q=[0.9934391975402832, -1.8203073940672816, -1.4238080978393555, -1.47730906427417, 1.477550983428955, 0.9099392890930176]
+  global Waypoint_06_p=p[.454819389507, .411334060077, .291839713142, -2.306690216015, 2.117222333267, -.146333888287]
+  global Waypoint_06_q=[0.9934630393981934, -1.817026277581686, -1.3852167129516602, -1.5191114705852051, 1.4775753021240234, 0.9098916053771973]
   $ 1 "BeforeStart"
   $ 2 "MoveJ"
   $ 3 "Waypoint_13" "breakAfter"
@@ -3984,23 +3996,25 @@ def David():
     while (  not  get_standard_digital_in(4)):
       $ 8 "'prazen loop ne laufa :)'"
       # 'prazen loop ne laufa :)'
+      $ 9 "Wait: 0.01"
+      sleep(0.01)
     end
   end
-  $ 9 "open_socket≔socket_open('192.168.65.102',50000,'student')"
+  $ 10 "open_socket≔socket_open('192.168.65.102',50000,'student')"
   global open_socket=socket_open("192.168.65.102",50000,"student")
-  $ 10 "Loop  not open_socket"
+  $ 11 "Loop  not open_socket"
   while (  not  open_socket):
-    $ 11 "open_socket≔socket_open('192.168.65.102',50000,'student')"
+    $ 12 "open_socket≔socket_open('192.168.65.102',50000,'student')"
     global open_socket=socket_open("192.168.65.102",50000,"student")
   end
-  $ 12 "Robot Program"
-  $ 13 "MoveL"
-  $ 14 "Waypoint_4" "breakAfter"
+  $ 13 "Robot Program"
+  $ 14 "MoveL"
+  $ 15 "Waypoint_4" "breakAfter"
   movel(Waypoint_4_p, a=1.2, v=0.25)
   # begin: URCap Program Node
   #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
   #   Type: Gripper
-  $ 15 "Gripper Open (2)"
+  $ 16 "Gripper Open (2)"
   if not(gripper_connected[1]):
     popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
   end
@@ -4012,110 +4026,109 @@ def David():
   rq_go_to("2")
   rq_wait("2")
   # end: URCap Program Node
-  $ 16 "If  not digital_in[5]"
+  $ 17 "If  not digital_in[5]"
   if (  not  get_standard_digital_in(5)):
-    $ 17 "Set DO[5]=On"
+    $ 18 "Set DO[5]=On"
     set_standard_digital_out(5, True)
   end
-  $ 18 "Loop  not digital_in[5]"
+  $ 19 "Loop  not digital_in[5]"
   while (  not  get_standard_digital_in(5)):
-    $ 19 "'cakam da se skatla pripelje'"
+    $ 20 "'cakam da se skatla pripelje'"
     # 'cakam da se skatla pripelje'
-  end
-  $ 20 "Set DO[5]=Off"
-  set_standard_digital_out(5, False)
-  $ 21 "'tcp ip skatla prispela'"
-  # 'tcp ip skatla prispela'
-  $ 22 "If open_socket"
-  if (open_socket):
-    $ 23 "was_send≔socket_send_string('PRISPELA','student')"
-    global was_send=socket_send_string("PRISPELA","student")
-    $ 24 "Loop  not was_send"
-    while (  not  was_send):
-      $ 25 "was_send≔socket_send_string('PRISPELA','student')"
-      global was_send=socket_send_string("PRISPELA","student")
-      $ 26 "Wait: 0.01"
-      sleep(0.01)
-    end
-    $ 27 "Wait: 0.01"
+    $ 21 "Wait: 0.01"
     sleep(0.01)
   end
-  $ 28 "MoveL"
-  $ 29 "Waypoint_14" "breakAfter"
+  $ 22 "Set DO[5]=Off"
+  set_standard_digital_out(5, False)
+  $ 23 "'tcp ip skatla prispela'"
+  # 'tcp ip skatla prispela'
+  $ 24 "If open_socket"
+  if (open_socket):
+    $ 25 "was_send≔socket_send_string('PRISPELA','student')"
+    global was_send=socket_send_string("PRISPELA","student")
+    $ 26 "Loop  not was_send"
+    while (  not  was_send):
+      $ 27 "was_send≔socket_send_string('PRISPELA','student')"
+      global was_send=socket_send_string("PRISPELA","student")
+      $ 28 "Wait: 0.01"
+      sleep(0.01)
+    end
+    $ 29 "Wait: 0.01"
+    sleep(0.01)
+  end
+  $ 30 "MoveL"
+  $ 31 "Waypoint_14" "breakAfter"
   movel(Waypoint_14_p, a=1.2, v=0.25)
-  $ 30 "'premik za prijem pokrova'"
+  $ 32 "'premik za prijem pokrova'"
   # 'premik za prijem pokrova'
-  # begin: URCap Program Node
-  #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
-  #   Type: Gripper
-  $ 31 "Gripper Close (2)"
-  if not(gripper_connected[1]):
-    popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
-  end
-  if not(rq_is_gripper_activated("2")):
-    popup("Gripper 2 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
-  end
-  rq_set_pos_spd_for(255, 0, 0, "2")
-  rq_wait_pos_spe_for_request(255, 0, 0, "2")
-  rq_go_to("2")
-  rq_wait("2")
-  # end: URCap Program Node
-  $ 32 "'gripper primer pokrov'"
-  # 'gripper primer pokrov'
   $ 33 "Set DO[0]=On"
   set_standard_digital_out(0, True)
   $ 34 "'vkopi napajanje za kljucavnico'"
   # 'vkopi napajanje za kljucavnico'
-  $ 35 "'tcp ip skatla odklenjena'"
-  # 'tcp ip skatla odklenjena'
-  $ 36 "If open_socket"
-  if (open_socket):
-    $ 37 "was_send≔socket_send_string('ODKLENJENA','student')"
-    global was_send=socket_send_string("ODKLENJENA","student")
-    $ 38 "Loop  not was_send"
-    while (  not  was_send):
-      $ 39 "was_send≔socket_send_string('ODKLENJENA','student')"
-      global was_send=socket_send_string("ODKLENJENA","student")
-      $ 40 "Wait: 0.01"
-      sleep(0.01)
-    end
-    $ 41 "Wait: 0.01"
-    sleep(0.01)
-  end
-  $ 42 "MoveL"
-  $ 43 "Waypoint_5" "breakAfter"
-  movel(Waypoint_5_p, a=1.2, v=0.25, r=0.01)
-  $ 44 "'dvigne pokrov'"
-  # 'dvigne pokrov'
-  $ 45 "'tcp_ip skatla je odprta'"
-  # 'tcp_ip skatla je odprta'
-  $ 46 "If open_socket"
-  if (open_socket):
-    $ 47 "was_send≔socket_send_string('ODPRTA','student')"
-    global was_send=socket_send_string("ODPRTA","student")
-    $ 48 "Loop  not was_send"
-    while (  not  was_send):
-      $ 49 "was_send≔socket_send_string('ODPRTA','student')"
-      global was_send=socket_send_string("ODPRTA","student")
-      $ 50 "Wait: 0.01"
-      sleep(0.01)
-    end
-    $ 51 "Wait: 0.01"
-    sleep(0.01)
-  end
-  $ 52 "Set DO[0]=Off"
+  $ 35 "Wait: 1.0"
+  sleep(1.0)
+  $ 36 "Set DO[0]=Off"
   set_standard_digital_out(0, False)
-  $ 53 "'izklopi napajanje kljucavice (<4s)'"
-  # 'izklopi napajanje kljucavice (<4s)'
-  $ 54 "MoveL"
-  $ 55 "Waypoint_6" "breakAfter"
-  movel(Waypoint_6_p, a=1.2, v=0.25)
-  $ 56 "'pokrov premakne k zadnjemu delu skatle'"
-  # 'pokrov premakne k zadnjemu delu skatle'
   # begin: URCap Program Node
   #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
   #   Type: Gripper
-  $ 57 "Gripper Open (2)"
+  $ 37 "Gripper Close (2)"
+  if not(gripper_connected[1]):
+    popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
+  end
+  if not(rq_is_gripper_activated("2")):
+    popup("Gripper 2 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
+  end
+  rq_set_pos_spd_for(255, 0, 71, "2")
+  rq_wait_pos_spe_for_request(255, 0, 71, "2")
+  rq_go_to("2")
+  rq_wait("2")
+  # end: URCap Program Node
+  $ 38 "'gripper primer pokrov'"
+  # 'gripper primer pokrov'
+  $ 39 "'tcp ip skatla odklenjena'"
+  # 'tcp ip skatla odklenjena'
+  $ 40 "If open_socket"
+  if (open_socket):
+    $ 41 "was_send≔socket_send_string('ODKLENJENA','student')"
+    global was_send=socket_send_string("ODKLENJENA","student")
+    $ 42 "Loop  not was_send"
+    while (  not  was_send):
+      $ 43 "was_send≔socket_send_string('ODKLENJENA','student')"
+      global was_send=socket_send_string("ODKLENJENA","student")
+      $ 44 "Wait: 0.01"
+      sleep(0.01)
+    end
+    $ 45 "Wait: 0.01"
+    sleep(0.01)
+  end
+  $ 49 "'tcp_ip skatla je odprta'"
+  # 'tcp_ip skatla je odprta'
+  $ 50 "If open_socket"
+  if (open_socket):
+    $ 51 "was_send≔socket_send_string('ODPRTA','student')"
+    global was_send=socket_send_string("ODPRTA","student")
+    $ 52 "Loop  not was_send"
+    while (  not  was_send):
+      $ 53 "was_send≔socket_send_string('ODPRTA','student')"
+      global was_send=socket_send_string("ODPRTA","student")
+      $ 54 "Wait: 0.01"
+      sleep(0.01)
+    end
+    $ 55 "Wait: 0.01"
+    sleep(0.01)
+  end
+  $ 56 "'izklopi napajanje kljucavice (<4s)'"
+  # 'izklopi napajanje kljucavice (<4s)'
+  $ 57 "MoveL"
+  $ 58 "Waypoint_6" "breakAfter"
+  movel(Waypoint_6_p, a=1.2, v=0.25)
+  $ 59 "'pokrov premakne blizje zadnjemu delu skatle'"
+  # 'pokrov premakne blizje zadnjemu delu skatle'
+  # begin: URCap Program Node
+  #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
+  #   Type: Gripper
+  $ 60 "Gripper Open (2)"
   if not(gripper_connected[1]):
     popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
   end
@@ -4127,27 +4140,47 @@ def David():
   rq_go_to("2")
   rq_wait("2")
   # end: URCap Program Node
-  $ 58 "'odpre prijemalo'"
+  $ 61 "'odpre prijemalo'"
   # 'odpre prijemalo'
-  $ 59 "MoveL"
-  $ 60 "Waypoint_11" "breakAfter"
+  $ 62 "MoveL"
+  $ 63 "Waypoint_01" "breakAfter"
+  movel(Waypoint_01_p, a=1.2, v=0.25)
+  $ 64 "'se umakne za potisk pokrova'"
+  # 'se umakne za potisk pokrova'
+  $ 65 "MoveL"
+  $ 66 "Waypoint_001" "breakAfter"
+  movel(Waypoint_001_p, a=1.2, v=0.25)
+  $ 67 "'vmesen korak za potisk pokrova'"
+  # 'vmesen korak za potisk pokrova'
+  $ 68 "MoveL"
+  $ 69 "Waypoint_02" "breakAfter"
+  movel(Waypoint_02_p, a=1.2, v=0.25)
+  $ 70 "'se pripravi za potisk pokrova'"
+  # 'se pripravi za potisk pokrova'
+  $ 71 "MoveL"
+  $ 72 "Waypoint_03" "breakAfter"
+  movel(Waypoint_03_p, a=1.2, v=0.25)
+  $ 73 "'potisne pokrov'"
+  # 'potisne pokrov'
+  $ 74 "MoveL"
+  $ 75 "Waypoint_11" "breakAfter"
   movel(Waypoint_11_p, a=1.2, v=0.25)
-  $ 61 "'stran od skatle'"
+  $ 76 "'stran od skatle'"
   # 'stran od skatle'
-  $ 62 "Waypoint_13" "breakAfter"
+  $ 77 "Waypoint_13" "breakAfter"
   movel(Waypoint_13_p, a=1.2, v=0.25)
-  $ 63 "'domov = opravi task'"
+  $ 78 "'domov = opravi task'"
   # 'domov = opravi task'
-  $ 64 "Wait: 2.0"
+  $ 79 "Wait: 2.0"
   sleep(2.0)
-  $ 65 "Waypoint_11" "breakAfter"
+  $ 80 "Waypoint_11" "breakAfter"
   movel(Waypoint_11_p, a=1.2, v=0.25)
-  $ 66 "'se postavi nad skatlo'"
+  $ 81 "'se postavi nad skatlo'"
   # 'se postavi nad skatlo'
   # begin: URCap Program Node
   #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
   #   Type: Gripper
-  $ 67 "Gripper Open (2)"
+  $ 82 "Gripper Open (2)"
   if not(gripper_connected[1]):
     popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
   end
@@ -4159,55 +4192,59 @@ def David():
   rq_go_to("2")
   rq_wait("2")
   # end: URCap Program Node
-  $ 68 "'odpre gripper'"
+  $ 83 "'odpre gripper'"
   # 'odpre gripper'
-  $ 69 "Waypoint_6" "breakAfter"
-  movel(Waypoint_6_p, a=1.2, v=0.25)
-  $ 70 "'se locira pri bunki za prijet'"
-  # 'se locira pri bunki za prijet'
+  $ 84 "Waypoint_04" "breakAfter"
+  movel(Waypoint_04_p, a=1.2, v=0.25)
+  $ 85 "'premik nad pozicijo za pobiranje pokrova'"
+  # 'premik nad pozicijo za pobiranje pokrova'
+  $ 86 "Waypoint_05" "breakAfter"
+  movel(Waypoint_05_p, a=1.2, v=0.25)
+  $ 87 "'premik na pozicijo za pobiranje pokrova'"
+  # 'premik na pozicijo za pobiranje pokrova'
   # begin: URCap Program Node
   #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
   #   Type: Gripper
-  $ 71 "Gripper Close (2)"
+  $ 88 "Gripper Close (2)"
   if not(gripper_connected[1]):
     popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
   end
   if not(rq_is_gripper_activated("2")):
     popup("Gripper 2 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
   end
-  rq_set_pos_spd_for(255, 255, 5, "2")
-  rq_wait_pos_spe_for_request(255, 255, 5, "2")
+  rq_set_pos_spd_for(255, 255, 77, "2")
+  rq_wait_pos_spe_for_request(255, 255, 77, "2")
   rq_go_to("2")
   rq_wait("2")
   # end: URCap Program Node
-  $ 72 "'zapre prijemalo'"
+  $ 89 "'zapre prijemalo'"
   # 'zapre prijemalo'
-  $ 73 "Waypoint_5" "breakAfter"
-  movel(Waypoint_5_p, a=1.2, v=0.25, r=0.01)
-  $ 74 "'dvigne pokrov'"
+  $ 90 "Waypoint_06" "breakAfter"
+  movel(Waypoint_06_p, a=1.2, v=0.25)
+  $ 91 "'dvigne pokrov'"
   # 'dvigne pokrov'
-  $ 75 "Waypoint_14" "breakAfter"
+  $ 92 "Waypoint_14" "breakAfter"
   movel(Waypoint_14_p, a=1.2, v=0.25)
-  $ 76 "'pokrov postavi v zacetno pozicijo'"
+  $ 93 "'pokrov postavi v zacetno pozicijo'"
   # 'pokrov postavi v zacetno pozicijo'
-  $ 77 "If open_socket"
+  $ 94 "If open_socket"
   if (open_socket):
-    $ 78 "was_send≔socket_send_string('ZAPRTA','student')"
+    $ 95 "was_send≔socket_send_string('ZAPRTA','student')"
     global was_send=socket_send_string("ZAPRTA","student")
-    $ 79 "Loop  not was_send"
+    $ 96 "Loop  not was_send"
     while (  not  was_send):
-      $ 80 "was_send≔socket_send_string('ZAPRTA','student')"
+      $ 97 "was_send≔socket_send_string('ZAPRTA','student')"
       global was_send=socket_send_string("ZAPRTA","student")
-      $ 81 "Wait: 0.01"
+      $ 98 "Wait: 0.01"
       sleep(0.01)
     end
-    $ 82 "Wait: 0.01"
+    $ 99 "Wait: 0.01"
     sleep(0.01)
   end
   # begin: URCap Program Node
   #   Source: Robotiq_Grippers, 1.8.3.4198-beta, Robotiq Inc.
   #   Type: Gripper
-  $ 83 "Gripper Open (2)"
+  $ 100 "Gripper Open (2)"
   if not(gripper_connected[1]):
     popup("Gripper 2 must be connected to run this program.", "No connection", False, True, True)
   end
@@ -4219,68 +4256,68 @@ def David():
   rq_go_to("2")
   rq_wait("2")
   # end: URCap Program Node
-  $ 84 "'odpre gripper'"
+  $ 101 "'odpre gripper'"
   # 'odpre gripper'
-  $ 85 "Set DO[0]=On"
+  $ 102 "Set DO[0]=On"
   set_standard_digital_out(0, True)
-  $ 86 "'vklopi napajanje za kljucavnico'"
+  $ 103 "'vklopi napajanje za kljucavnico'"
   # 'vklopi napajanje za kljucavnico'
-  $ 87 "Wait: 1.0"
+  $ 104 "Wait: 1.0"
   sleep(1.0)
-  $ 88 "Set DO[0]=Off"
+  $ 105 "Set DO[0]=Off"
   set_standard_digital_out(0, False)
-  $ 89 "'izklopi napajanje za kljucavnico'"
+  $ 106 "'izklopi napajanje za kljucavnico'"
   # 'izklopi napajanje za kljucavnico'
-  $ 90 "If open_socket"
+  $ 107 "If open_socket"
   if (open_socket):
-    $ 91 "was_send≔socket_send_string('ZAKLENJENA','student')"
+    $ 108 "was_send≔socket_send_string('ZAKLENJENA','student')"
     global was_send=socket_send_string("ZAKLENJENA","student")
-    $ 92 "Loop  not was_send"
+    $ 109 "Loop  not was_send"
     while (  not  was_send):
-      $ 93 "was_send≔socket_send_string('ZAKLENJENA','student')"
+      $ 110 "was_send≔socket_send_string('ZAKLENJENA','student')"
       global was_send=socket_send_string("ZAKLENJENA","student")
-      $ 94 "Wait: 0.01"
+      $ 111 "Wait: 0.01"
       sleep(0.01)
     end
-    $ 95 "Wait: 0.01"
+    $ 112 "Wait: 0.01"
     sleep(0.01)
   end
-  $ 96 "Waypoint_13" "breakAfter"
+  $ 113 "Waypoint_13" "breakAfter"
   movel(Waypoint_13_p, a=1.2, v=0.25)
-  $ 97 "'domov'"
+  $ 114 "'domov'"
   # 'domov'
-  $ 98 "If digital_in[5]"
+  $ 115 "If digital_in[5]"
   if (get_standard_digital_in(5)):
-    $ 99 "Set DO[5]=On"
+    $ 116 "Set DO[5]=On"
     set_standard_digital_out(5, True)
-    $ 100 "'ce je skatla se pri senzorju posljemo naprej'"
+    $ 117 "'ce je skatla se pri senzorju posljemo naprej'"
     # 'ce je skatla se pri senzorju posljemo naprej'
-    $ 101 "'tcp_ip skatla sla naprej'"
+    $ 118 "'tcp_ip skatla sla naprej'"
     # 'tcp_ip skatla sla naprej'
-    $ 102 "If open_socket"
+    $ 119 "If open_socket"
     if (open_socket):
-      $ 103 "was_send≔socket_send_string('ODPRAVLJENA','student')"
+      $ 120 "was_send≔socket_send_string('ODPRAVLJENA','student')"
       global was_send=socket_send_string("ODPRAVLJENA","student")
-      $ 104 "Loop  not was_send"
+      $ 121 "Loop  not was_send"
       while (  not  was_send):
-        $ 105 "was_send≔socket_send_string('ODPRAVLJENA','student')"
+        $ 122 "was_send≔socket_send_string('ODPRAVLJENA','student')"
         global was_send=socket_send_string("ODPRAVLJENA","student")
-        $ 106 "Wait: 0.01"
+        $ 123 "Wait: 0.01"
         sleep(0.01)
       end
-      $ 107 "Wait: 0.01"
+      $ 124 "Wait: 0.01"
       sleep(0.01)
     end
   end
-  $ 108 "Loop digital_in[5]"
+  $ 125 "Loop digital_in[5]"
   while (get_standard_digital_in(5)):
-    $ 109 "'cakam da skatla ne bo vec pri senzorju'"
+    $ 126 "'cakam da skatla ne bo vec pri senzorju'"
     # 'cakam da skatla ne bo vec pri senzorju'
   end
-  $ 110 "Set DO[5]=Off"
+  $ 127 "Set DO[5]=Off"
   set_standard_digital_out(5, False)
-  $ 111 "socket_close('student')"
+  $ 128 "socket_close('student')"
   socket_close("student")
-  $ 112 "Halt"
+  $ 129 "Halt"
   halt
 end
